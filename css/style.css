@@ -1,0 +1,25 @@
+
+ol {padding-left: 2em;
+font-size:1.1em;
+}
+li{
+	font-size:1.2em;
+}
+ol li {padding: 5px;color:#000;}
+
+ol li:nth-child(even){background: #dfdfdf;}
+
+.strike{text-decoration: line-through;}
+
+li:hover{
+  cursor: pointer;
+ }
+.nav-item{
+	padding-left:1.5em;
+}
+option[selected] {
+    background-color: #dfdfdf;
+    font-weight: bold;
+    text-decoration: underline;
+	
+}

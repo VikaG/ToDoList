@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>ToDoList</title>
+	
+	<link rel="stylesheet" href="css/style.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  </head>
+  <body>
+	<div>
+		<img src="img/LOGO1.png" width="30%" height="" alt="logo">
+	</div>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+	<button class="navbar-toggler" type="button" data-toggle="collapse" 
+		data-target="#navbarSupportContent" aria-controls="navbarSupportedContent"
+		aria-exppeanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+  <h1>Welcome</h1>
+	<div class="collapse navbar-collapse" id="navbarSupportContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<div class="form-group">
+				
+                    <select class="form-control selectpicker" id="select" title="">
+                        <option value="1" selected >Select type</option>
+                        <option value="user">User</option>
+                        <option value="student">Student</option>
+                        <option value="developer">Developer</option>
+                    </select>
+                </div>
+				
+			</li>
+			<li class="nav-item">
+				<a href="#" class="nav-link" data-toggle="modal" 
+				data-target="#exampleModal" >Create users</a>
+			</li>
+			<li class="nav-item">
+				<a href="#" class="nav-link" data-toggle="modal" 
+				data-target="#exampleTask">Tasks</a>
+			</li>
+		</ul>
+	</div>
+	</nav>
+
+	<br/> <ol></ol>  
+	
+	
+	
+	<div class = "todo"></div>
+	<div class="modal fade" id="exampleModal" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="examleModalLabel">
+					Create user</h3>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+					
+				</div>
+				<div class="modal-body">
+					<div class="container-fluid">
+					<form>
+						<div class="form-row">
+							<div class="col">
+								<input type="text" class="form-control reset" data-toggle="tooltip"
+								placeholder="First name" id="inputFirstName" disabled 
+								data-toggle="tooltip" data-placement="top" title="Select you type">
+							</div>
+							<div class="col">
+								<input type="text" class="form-control reset" 
+								placeholder="Last name" id="inputLastName" disabled>
+							</div> 
+						</div>
+						<div class="form-row">
+							<div class="col">
+								<label for="InputSpecialization"></label>
+								<input type="text" class="form-control reset" 
+								placeholder="Specialization" id="inputSpecialization" 
+								 disabled>
+							</div>
+							<div class="col">
+								<label for="inputJobTitle"></label>
+								<input type="text" class="form-control reset" 
+								id="inputJobTitle" placeholder="Job Title" disabled>
+							</div>
+						</div>
+						<label for="form-check-label"></label>
+						
+					</form>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary"data-dismiss="modal" >Close</button>
+					<button id = "addlogin" class="btn btn-secondary" onclick="ButtonClickLogin()" >Add</button>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="exampleTask" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="examleModalLabel">
+					Create task</h3>
+					<button type="button" class="close" onclick="Clouse()" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="container-fluid">
+						<div class="tabbable"> 
+							<ul class="nav nav-tabs">
+								<li class="nav-item"><a class="nav-link active" href="#simpleTask" id="Simple"  data-toggle="tab">Simple Task</a></li>
+								<li class="nav-item"><a class="nav-link" href="#homeTask" id="Home" data-toggle="tab" onclick="UnavailableHomeTask()" >Home Task</a></li>
+								<li class="nav-item"><a class="nav-link" href="#projectTask" id="Project"  data-toggle="tab" onclick="UnavailableProjectTask()" >Project Task</a></li>
+							</ul>
+							<div class="tab-content">
+								<div class="tab-pane active" id="simpleTask">
+									<form>
+										<div class="form-row">
+											<div class="col">
+												<label></label>
+												<input type="text" class="form-control  reset" 
+												placeholder="Title" id="inputTitleSimple" disabled>
+											</div>
+											<div class="col">
+												<label></label>
+												<input type="text" class="form-control  reset" 
+												placeholder="Status" id="inputStatusSimple" disabled>
+											</div> 
+										</div>
+									</form>
+						
+									<div class="modal-footer">
+										<button class="btn btn-secondary" onclick="Clouse()"
+										data-dismiss="modal">Close</button>
+										<button class="btn btn-secondary" id="addTaskSimple" onclick="ButtonClickTaskSimpl()">Add task</button>
+									</div>
+									
+								</div>		
+								<div class="tab-pane fade" id="homeTask">
+									<form>
+										<div class="form-row">
+											<div class="col">
+												<label></label>
+												<input type="text" class="form-control  reset" 
+												placeholder="Title" id="inputTitleHome" disabled>
+											</div>
+											<div class="col">
+												<label></label>
+												<input type="text" class="form-control  reset" 
+												placeholder="Status" id="inputStatusHome" disabled>
+											</div> 
+										</div>
+										<div class="form-group">
+											<label for="exampleFormControlTextarea1"></label>
+											<textarea class="form-control  reset" placeholder="Description" 
+											id="descriptionHome" disabled></textarea>
+										</div>
+									</form>	
+									<div class="modal-footer">
+										<button class="btn btn-secondary" onclick="Clouse()"
+										data-dismiss="modal">Close</button>
+										<button class="btn btn-secondary" id="addTaskHome" onclick="ButtonClickTaskHome()">Add task</button>
+									</div>
+								</div>
+								
+								<div class="tab-pane fade" id="projectTask">
+									<form>
+										<div class="form-row">
+											<div class="col">
+												<label></label>
+												<input type="text" class="form-control  reset"
+												placeholder="Title" id="inputTitleProject" disabled>
+											</div>
+											<div class="col">
+												<label></label>
+												<input type="text" class="form-control  reset" 
+												placeholder="Status" id="inputStatusProject" disabled>
+											</div> 
+										</div>
+										<div class="form-group">
+											<label for="exampleFormControlTextarea1"></label>
+											<textarea class="form-control  reset" placeholder="Description" id="descriptionProject"
+											disabled></textarea>
+										</div>
+										<div class="form-row">
+											<label></label>
+											<input type="date" class="form-control  reset" name="calendar" 
+											placeholder="Deadline date" id="inputDeadlineDateProject" disabled>
+										</div>
+									</form>	
+									<div class="modal-footer">
+										<button class="btn btn-secondary" onclick="Clouse()"
+										data-dismiss="modal">Close</button>
+										<button class="btn btn-secondary" id="addTaskProject" onclick="ButtonClickTaskProject()">Add task</button>
+									</div>
+									
+									
+								</div>
+								
+								
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<script src="js/style.js"></script>
+	<script src="js/object.js"></script>
+	<script src="js/login.js"></script>
+	<script src="js/task.js"></script>
+	<script src="js/list.js"></script>
+	
+  </body>
+</html>
+

@@ -1,44 +1,54 @@
 function ButtonClickLogin() {
 	var id = document.getElementById("select").value;
-	var name = document.getElementById("inputFirstName").value;
-    var surname = document.getElementById("inputLastName").value;
-    var specialization = document.getElementById("inputSpecialization").value;
-    var jobTitle = document.getElementById("inputJobTitle").value;
-		
-	if(id === 'user'){
-		if(name === '' || surname === ''){
-			alert("Fill in the forms");
-		}
-		else{	
-			var user = new User(name, surname);
-			$('#addlogin').prop('disabled',true);
-			console.log(user);
-			$('.reset').val('');
-		}	
-	}
-
-	if(id === 'student'){
-		if(name === '' || surname === '' || specialization === ''){
-			alert("Fill in the forms");
-		}
-		else{
-			var student = new Student(name, surname, specialization);
-			console.log(student);
-			$('#addlogin').prop('disabled',true);
-			$('.reset').val('');
-		}
-	}
 	
-	if(id === 'developer'){
-		if(name === '' || surname === '' || specialization === '' || jobTitle === ''){
-			alert("Fill in the forms");
+	var inputValue = ['name', 'surname', 'specialization', 'jobTitle'];
+	
+	var selected ={
+		user: '.for-user',
+		student: '.for-student',
+		developer: '.for-developer'
+	}
+	var inputs = $("#login").find(selected[id]);
+	var valid = true;
+	$.each(inputs, function(i, item) {
+		if(!$(item).val()) {
+			valid = false; 
+			$(item).addClass("error"); 
 		}
-		else{
-			var developer = new Developer(name, surname, specialization, jobTitle);
+		else {$(item).removeClass("error");
+		}
+	});
+	
+	if (!valid)	alert("Fill in the forms");
+	else{
+		var valueData = {};
+		for (var i in inputValue){
+			var value = $('#'+inputValue[i]).val();
+		if(value) {
+		valueData[inputValue[i]] = value;	}
+		}
+	
+
+		switch(id){
+		case "user":{
+			var user = new User(valueData);
+			console.log(user);
+			break;
+		}
+		case "student":{
+			var student = new Student(valueData);
+			console.log(student);
+			break;
+		}	
+		case "developer":{
+			var developer = new Developer(valueData);
 			console.log(developer);
-			$('#addlogin').prop('disabled',true);
-			$('.reset').val('');
-		}
+			break;
+		}	
+			
+		}			
+	$('.reset').val('');	
+	$('#addlogin').prop('disabled',true);		
 	}
 }	
-
+	
